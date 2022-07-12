@@ -1,0 +1,40 @@
+version: '2.1'
+
+services:
+  joshmc:
+    image: itzg/minecraft-server
+    ports:
+      - '25565:25565'
+      - '25575:25575'
+    volumes:
+      - ./joshmc:/data
+    environment:
+      EULA: 'TRUE'
+      SKIP_SERVER_PROPERTIES: 'TRUE'
+      MEMORY: ''
+      JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
+      TUNE_VIRTUALIZED: 'TRUE'
+      ENABLE_ROLLING_LOGS: 'true'
+      TZ: 'America/New_York'
+      USE_AIKAR_FLAGS: 'true'
+    mem_limit: 2G
+    restart: always
+
+  loganmc:
+    image: itzg/minecraft-server
+    ports:
+      - "25566:25565"
+      - "25576:25575"
+    volumes:
+      - ./loganmc:/data
+    environment:
+      EULA: 'TRUE'
+      SKIP_SERVER_PROPERTIES: 'TRUE'
+      MEMORY: ''
+      JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
+      TUNE_VIRTUALIZED: 'TRUE'
+      ENABLE_ROLLING_LOGS: 'true'
+      TZ: 'America/New_York'
+      USE_AIKAR_FLAGS: 'true'
+    mem_limit: 2G
+    restart: always
